@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vani (वाणी) - AI Social Video</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { background-color: #000; color: #fff; touch-action: pan-y; }
+    .snap-y-mandatory { scroll-snap-type: y mandatory; }
+    .snap-always { scroll-snap-stop: always; scroll-snap-align: start; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="flex justify-center bg-black font-sans antialiased overflow-hidden select-none">
+
+  <!-- Mobile Wrapper Frame -->
+  <main class="w-full max-w-md h-[100dvh] flex flex-col relative bg-zinc-950 border-x border-zinc-900 shadow-2xl">
+
+    <!-- Top Feed Header -->
+    <header id="top-nav" class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 pt-4 pb-2 bg-gradient-to-b from-black/80 to-transparent">
+      <div class="flex gap-4 text-sm font-semibold tracking-wide">
+        <button class="text-white border-b-2 border-amber-400 pb-0.5">For You</button>
+        <button onclick="switchTab('discover')" class="text-zinc-400">Trending 🇮🇳</button>
+      </div>
+      <button onclick="toggleMute()" id="mute-btn" class="p-2 rounded-full bg-black/40 border border-white/10 text-white">
+        <i data-lucide="volume-x" class="w-4 h-4"></i>
+      </button>
+    </header>
+
+    <!-- TAB 1: Vertical Swipe Feed -->
+    <div id="tab-home" class="flex-1 overflow-y-scroll snap-y-mandatory no-scrollbar relative h-full">
+      
+      <!-- Video 1 -->
+      <section class="relative h-[100dvh] w-full snap-always flex items-center justify-center bg-zinc-900">
+        <video class="feed-video w-full h-full object-cover" loop playsinline muted autoplay src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"></video>
+        <div class="absolute right-3 bottom-24 flex flex-col items-center gap-5 z-20">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" class="w-11 h-11 rounded-full border-2 border-amber-400 object-cover">
+          </div>
+          <button onclick="likeAction(this)" class="flex flex-col items-center">
+            <div class="p-3 bg-black/40 backdrop-blur rounded-full active:scale-75 transition-transform"><i data-lucide="heart" class="w-6 h-6"></i></div>
+            <span class="text-[11px] font-semibold mt-1">14.2K</span>
+          </button>
+          <button onclick="openRemix('Lord Shiva cosmic tandav on Kailash mountain at dusk with glowing aura')" class="flex flex-col items-center">
+            <div class="p-3 bg-gradient-to-tr from-amber-500 to-rose-600 rounded-full animate-pulse"><i data-lucide="sparkles" class="w-6 h-6 text-white"></i></div>
+            <span class="text-[10px] font-bold text-amber-300 mt-1">Remix</span>
+          </button>
+          <button class="flex flex-col items-center">
+            <div class="p-3 bg-black/40 backdrop-blur rounded-full"><i data-lucide="share-2" class="w-5 h-5"></i></div>
+          </button>
+        </div>
+        <div class="absolute bottom-16 left-0 right-14 p-4 z-10 bg-gradient-to-t from-black/90 to-transparent">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm">@shiva_creations</span>
+            <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] px-1.5 py-0.5 rounded">AI Vani</span>
+          </div>
+          <p class="text-xs text-zinc-200 mt-1">महादेव का दिव्य तांडव हिमालय की चोटियों पर 🔱 Cosmic balance of energy.</p>
+          <p class="text-[11px] font-semibold text-amber-400 mt-1">#Mahadev #ShivTandav #AIVideo</p>
+        </div>
+      </section>
+
+      <!-- Video 2 -->
+      <section class="relative h-[100dvh] w-full snap-always flex items-center justify-center bg-zinc-900">
+        <video class="feed-video w-full h-full object-cover" loop playsinline muted src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"></video>
+        <div class="absolute right-3 bottom-24 flex flex-col items-center gap-5 z-20">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100" class="w-11 h-11 rounded-full border-2 border-amber-400 object-cover">
+          </div>
+          <button onclick="likeAction(this)" class="flex flex-col items-center">
+            <div class="p-3 bg-black/40 backdrop-blur rounded-full active:scale-75 transition-transform"><i data-lucide="heart" class="w-6 h-6"></i></div>
+            <span class="text-[11px] font-semibold mt-1">8.9K</span>
+          </button>
+          <button onclick="openRemix('Cyberpunk Mumbai Marine Drive during heavy monsoon rains with vintage flying taxis')" class="flex flex-col items-center">
+            <div class="p-3 bg-gradient-to-tr from-amber-500 to-rose-600 rounded-full animate-pulse"><i data-lucide="sparkles" class="w-6 h-6 text-white"></i></div>
+            <span class="text-[10px] font-bold text-amber-300 mt-1">Remix</span>
+          </button>
+          <button class="flex flex-col items-center">
+            <div class="p-3 bg-black/40 backdrop-blur rounded-full"><i data-lucide="share-2" class="w-5 h-5"></i></div>
+          </button>
+        </div>
+        <div class="absolute bottom-16 left-0 right-14 p-4 z-10 bg-gradient-to-t from-black/90 to-transparent">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm">@mumbai_tales</span>
+            <span class="bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[10px] px-1.5 py-0.5 rounded">AI Vani</span>
+          </div>
+          <p class="text-xs text-zinc-200 mt-1">Cyberpunk Marine Drive in monsoon rain! 🌧️ Cutting chai in 2077.</p>
+          <p class="text-[11px] font-semibold text-amber-400 mt-1">#MumbaiRain #CyberpunkIndia</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 2: Discover / Trending India -->
+    <div id="tab-discover" class="hidden flex-1 overflow-y-auto p-4 pb-20 space-y-4">
+      <h1 class="text-xl font-bold bg-gradient-to-r from-amber-400 to-rose-500 bg-clip-text text-transparent">Trending India 🇮🇳</h1>
+      <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
+        <button class="px-3.5 py-1.5 rounded-full bg-amber-500 text-black font-bold whitespace-nowrap">Hindi</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-zinc-800 text-zinc-300 whitespace-nowrap">Hinglish</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-zinc-800 text-zinc-300 whitespace-nowrap">Tamil</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-zinc-800 text-zinc-300 whitespace-nowrap">Telugu</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-zinc-800 text-zinc-300 whitespace-nowrap">Bengali</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2.5 pt-2">
+        <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 aspect-[9/16] relative">
+          <img src="https://images.unsplash.com/photo-1609137144822-0d1279a5585b?w=400" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 inset-x-0 p-2 bg-gradient-to-t from-black to-transparent text-[11px] font-bold">#Devotional 🔱</div>
+        </div>
+        <div class="rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 aspect-[9/16] relative">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 inset-x-0 p-2 bg-gradient-to-t from-black to-transparent text-[11px] font-bold">#MonsoonChai ☕</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Create AI Studio -->
+    <div id="tab-create" class="hidden flex-1 flex flex-col justify-between p-4 pb-20 overflow-y-auto">
+      <div>
+        <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
+          <h2 class="font-bold text-base bg-gradient-to-r from-amber-400 to-rose-500 bg-clip-text text-transparent">Think it. Say it. Make it.</h2>
+          <span class="text-[10px] bg-rose-600/20 text-rose-400 border border-rose-600/30 px-2 py-0.5 rounded-full">Voice & AI Mode</span>
+        </div>
+        <div class="mt-4 relative">
+          <textarea id="prompt-input" rows="4" placeholder="Speak or type your idea in Hindi, Hinglish, or English... e.g. भगवान कृष्ण माखन चुराते हुए, गोकुल में शाम का समय" class="w-full p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-xs text-white focus:outline-none focus:border-amber-400 resize-none leading-relaxed"></textarea>
+          <button id="mic-btn" onclick="toggleVoice()" class="absolute right-3 bottom-3 p-2.5 rounded-full bg-zinc-800 text-zinc-300 active:scale-90">
+            <i data-lucide="mic" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="flex gap-2 flex-wrap mt-3">
+          <button onclick="setFastPreset('Lord Shiva performing Tandav on snow Himalayas 4K')" class="text-[11px] bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full text-zinc-300">Shiva Tandav 🔱</button>
+          <button onclick="setFastPreset('Mumbai Marine Drive during monsoon evening neon slow motion')" class="text-[11px] bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full text-zinc-300">Mumbai Monsoon 🌧️</button>
+          <button onclick="setFastPreset('Indian street cricket final over match excitement')" class="text-[11px] bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full text-zinc-300">Cricket Win 🏏</button>
+        </div>
+        <div id="ai-blueprint" class="hidden mt-4 p-3.5 bg-zinc-900 border border-amber-500/30 rounded-xl space-y-2">
+          <span class="text-xs font-bold text-amber-400">✓ AI Production Cut Generated</span>
+          <p id="bp-caption" class="text-xs text-zinc-200 italic"></p>
+          <div class="text-[11px] text-zinc-400 bg-black/60 p-2 rounded">Camera: Cinematic 35mm Tracking | 60 FPS Photorealism</div>
+        </div>
+      </div>
+      <button id="gen-btn" onclick="generateVideoPlan()" class="w-full py-3.5 bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-all">
+        Convert Idea to Video Plan
+      </button>
+    </div>
+
+    <!-- TAB 4: Profile -->
+    <div id="tab-profile" class="hidden flex-1 p-6 pb-20 flex flex-col items-center text-center">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-20 h-20 rounded-full border-2 border-amber-400 object-cover shadow-lg">
+      <h3 class="font-bold text-base mt-2">Aarav Sharma</h3>
+      <span class="text-xs text-zinc-400">@shiva_creations</span>
+      <p class="text-xs text-zinc-300 mt-2 max-w-xs">AI Video Creator 🔱 | Indian Stories & Culture Reimagined</p>
+      <div class="flex gap-6 mt-5 py-2 px-6 bg-zinc-900 rounded-xl border border-zinc-800">
+        <div><span class="font-bold text-sm block">48.2K</span><span class="text-[10px] text-zinc-400">Followers</span></div>
+        <div><span class="font-bold text-sm block">1.2M</span><span class="text-[10px] text-zinc-400">Likes</span></div>
+        <div><span class="font-bold text-sm block">18</span><span class="text-[10px] text-zinc-400">Creations</span></div>
+      </div>
+    </div>
+
+    <!-- Bottom Persistent Nav Bar -->
+    <nav class="absolute bottom-0 inset-x-0 h-16 bg-black/95 backdrop-blur-md border-t border-zinc-900 flex items-center justify-around z-40 px-3">
+      <button onclick="switchTab('home')" class="flex flex-col items-center text-white">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] mt-1">Home</span>
+      </button>
+      <button onclick="switchTab('discover')" class="flex flex-col items-center text-zinc-500">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+        <span class="text-[10px] mt-1">Discover</span>
+      </button>
+      <button onclick="switchTab('create')" class="flex items-center justify-center p-2.5 bg-gradient-to-tr from-amber-500 to-rose-600 rounded-2xl shadow-lg -mt-4 active:scale-90 transition-transform">
+        <i data-lucide="plus-square" class="w-6 h-6 text-white"></i>
+      </button>
+      <button onclick="switchTab('profile')" class="flex flex-col items-center text-zinc-500">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] mt-1">Profile</span>
+      </button>
+    </nav>
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    function switchTab(tabId) {
+      ['home', 'discover', 'create', 'profile'].forEach(id => {
+        document.getElementById(`tab-${id}`).classList.add('hidden');
+      });
+      document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+      const topNav = document.getElementById('top-nav');
+      if (tabId === 'home') { topNav.classList.remove('hidden'); } else { topNav.classList.add('hidden'); }
+    }
+
+    let isMuted = true;
+    function toggleMute() {
+      isMuted = !isMuted;
+      document.querySelectorAll('.feed-video').forEach(v => v.muted = isMuted);
+      const icon = document.getElementById('mute-btn');
+      icon.innerHTML = isMuted ? '<i data-lucide="volume-x" class="w-4 h-4"></i>' : '<i data-lucide="volume-2" class="w-4 h-4"></i>';
+      lucide.createIcons();
+    }
+
+    function likeAction(btn) {
+      const heart = btn.querySelector('svg');
+      heart.classList.toggle('fill-rose-500');
+      heart.classList.toggle('text-rose-500');
+    }
+
+    function setFastPreset(text) {
+      document.getElementById('prompt-input').value = text;
+    }
+
+    function openRemix(promptText) {
+      document.getElementById('prompt-input').value = promptText;
+      switchTab('create');
+    }
+
+    function toggleVoice() {
+      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert('Voice recognition not supported on this browser. Please use Chrome.');
+        return;
+      }
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const rec = new SpeechRecognition();
+      rec.lang = 'hi-IN';
+      const mic = document.getElementById('mic-btn');
+      rec.onstart = () => mic.classList.add('bg-rose-600', 'animate-pulse');
+      rec.onend = () => mic.classList.remove('bg-rose-600', 'animate-pulse');
+      rec.onresult = (e) => {
+        document.getElementById('prompt-input').value += ' ' + e.results[0][0].transcript;
+      };
+      rec.start();
+    }
+
+    function generateVideoPlan() {
+      const val = document.getElementById('prompt-input').value.trim();
+      if (!val) return;
+      const btn = document.getElementById('gen-btn');
+      btn.innerText = 'Analyzing with AI Director...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('ai-blueprint').classList.remove('hidden');
+        document.getElementById('bp-caption').innerText = `✨ प्रस्तुत है: ${val}। हर हर महादेव! #TrendingIndia`;
+        btn.innerText = 'Render Master Video Cut';
+        btn.classList.remove('from-amber-500', 'via-rose-600', 'to-indigo-600');
+        btn.classList.add('bg-emerald-600');
+        btn.disabled = false;
+        btn.onclick = () => {
+          alert('Video Generation Dispatched!');
+          switchTab('home');
+        };
+      }, 900);
+    }
+  </script>
+</body>
+</html>
